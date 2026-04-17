@@ -1,0 +1,20 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Node / Next.js
+web/node_modules/
+web/.next/
+web/out/
+web/.vercel/
+web/*.log
+web/.env*.local
+.DS_Store
+
+# Source PDF (exceeds GitHub 100 MB limit — regenerate assets via scripts/)
+catalog-2023-2024_compressed.pdf
+
+# Large OCR intermediates (regenerable)
+catalog_extracted.json
+catalog_ocr.json
