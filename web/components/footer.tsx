@@ -3,65 +3,164 @@ import { SITE, contactWhatsAppUrl } from "@/lib/site";
 
 export default function Footer() {
   return (
-    <footer className="mt-24 md:mt-32 border-t border-hairline bg-cream">
-      <div className="mx-auto max-w-content px-6 md:px-10 py-16 grid gap-12 md:grid-cols-4">
-        <div>
-          <div className="font-serif text-lg tracking-wordmark uppercase">
-            Singh&nbsp;Sabha
-          </div>
-          <p className="mt-4 text-sm text-muted leading-relaxed max-w-[22ch]">
-            The legend of award products. Crafted in Delhi, trusted by schools
-            and colleges since decades.
-          </p>
-        </div>
+    <footer className="relative overflow-hidden bg-ink-dark pt-32 pb-10 px-4 md:px-8">
 
-        <div>
-          <div className="text-[11px] tracking-[0.2em] uppercase text-muted mb-4">
-            Explore
-          </div>
-          <ul className="space-y-2 text-sm">
-            <li><Link href="/catalog">Catalogue</Link></li>
-            <li><Link href="/gallery">Full 2023–24 Gallery</Link></li>
-            <li><Link href="/about">About Us</Link></li>
-            <li><Link href="/contact">Contact</Link></li>
-          </ul>
-        </div>
-
-        <div>
-          <div className="text-[11px] tracking-[0.2em] uppercase text-muted mb-4">
-            Reach us
-          </div>
-          <ul className="space-y-2 text-sm">
-            <li>{SITE.address}</li>
-            <li>
-              <a href={contactWhatsAppUrl()} className="underline underline-offset-4 decoration-hairline hover:decoration-ink">
-                WhatsApp
-              </a>
-            </li>
-            <li>
-              <a href={`mailto:${SITE.email}`} className="underline underline-offset-4 decoration-hairline hover:decoration-ink">
-                {SITE.email}
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        <div>
-          <div className="text-[11px] tracking-[0.2em] uppercase text-muted mb-4">
-            Bulk orders
-          </div>
-          <p className="text-sm text-muted leading-relaxed">
-            Schools, colleges and corporates — write in for quotes on annual-day
-            awards, sports trophies and memento orders.
-          </p>
-        </div>
+      {/* Giant SINGH watermark */}
+      <div
+        aria-hidden
+        className="absolute top-0 left-0 w-full flex justify-center items-start pt-10 overflow-hidden pointer-events-none select-none z-0"
+        style={{ opacity: 0.04 }}
+      >
+        <span className="text-[22vw] font-sans font-bold leading-none tracking-tighter text-white whitespace-nowrap">
+          SINGH
+        </span>
       </div>
 
-      <div className="border-t border-hairline">
-        <div className="mx-auto max-w-content px-6 md:px-10 py-5 flex flex-col md:flex-row items-center justify-between gap-2 text-xs text-muted">
-          <span>© {new Date().getFullYear()} Singh Sabha Enterprise</span>
-          <span>Made in Delhi</span>
+      <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col">
+
+        {/* ── Top area: brand + 3 nav columns ── */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-8 mb-32 mt-10">
+
+          {/* Left: brand */}
+          <div className="md:col-span-5 flex flex-col text-cream">
+            <div className="flex flex-col mb-8">
+              <h2 className="text-6xl md:text-8xl font-bold tracking-tighter text-cream mb-2">
+                Singh Sabha.
+              </h2>
+              <p className="text-xl md:text-2xl text-amber font-serif italic opacity-90">
+                The Legend of Recognition.
+              </p>
+            </div>
+            <p className="text-cream/55 max-w-[35ch] leading-relaxed text-lg">
+              Handcrafted trophies, medals, and mementos for Delhi&rsquo;s
+              schools, colleges, and institutions. Built for the moment, made
+              to outlast the memory.
+            </p>
+          </div>
+
+          {/* Explore */}
+          <div className="md:col-span-2 md:col-start-7">
+            <h4 className="text-cream font-semibold mb-6 flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-amber inline-block" />
+              Explore
+            </h4>
+            <ul className="flex flex-col gap-4 text-cream/55">
+              <li>
+                <Link href="/catalog" className="hover:text-cream transition-colors">
+                  Catalogue
+                </Link>
+              </li>
+              <li>
+                <Link href="/gallery" className="hover:text-cream transition-colors">
+                  Gallery
+                </Link>
+              </li>
+              <li>
+                <Link href="/about" className="hover:text-cream transition-colors">
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="hover:text-cream transition-colors">
+                  Contact
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Categories */}
+          <div className="md:col-span-2">
+            <h4 className="text-cream font-semibold mb-6 flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-amber inline-block" />
+              Categories
+            </h4>
+            <ul className="flex flex-col gap-4 text-cream/55">
+              <li>
+                <Link href="/catalog?category=trophies" className="hover:text-cream transition-colors">
+                  Trophies
+                </Link>
+              </li>
+              <li>
+                <Link href="/catalog?category=medals" className="hover:text-cream transition-colors">
+                  Medals
+                </Link>
+              </li>
+              <li>
+                <Link href="/catalog?category=crystal" className="hover:text-cream transition-colors">
+                  Crystal Awards
+                </Link>
+              </li>
+              <li>
+                <Link href="/catalog?category=acrylic" className="hover:text-cream transition-colors">
+                  Acrylic Awards
+                </Link>
+              </li>
+              <li>
+                <Link href="/catalog?category=frames" className="hover:text-cream transition-colors">
+                  Frames &amp; Mementos
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Contact */}
+          <div className="md:col-span-2">
+            <h4 className="text-cream font-semibold mb-6 flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-amber inline-block" />
+              Contact
+            </h4>
+            <div className="flex flex-col gap-4 text-cream/55">
+              <p>{SITE.address}</p>
+              <a
+                href={contactWhatsAppUrl()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-cream transition-colors"
+              >
+                WhatsApp
+              </a>
+              <a
+                href={`mailto:${SITE.email}`}
+                className="hover:text-cream transition-colors break-all"
+              >
+                {SITE.email}
+              </a>
+              <a
+                href={`tel:+91${SITE.phone}`}
+                className="hover:text-cream transition-colors"
+              >
+                {SITE.phone}
+              </a>
+            </div>
+          </div>
         </div>
+
+        {/* ── Bottom bar ── */}
+        <div className="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-white/10 text-sm text-cream/40">
+          <p>© {new Date().getFullYear()} Singh Sabha Enterprise</p>
+          <div className="flex gap-6 mt-4 md:mt-0">
+            <a
+              href={contactWhatsAppUrl()}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-cream transition-colors uppercase tracking-widest text-xs font-semibold"
+            >
+              WhatsApp
+            </a>
+            <a
+              href="https://maps.google.com/?q=Singh+Sabha+Enterprise+Delhi"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-cream transition-colors uppercase tracking-widest text-xs font-semibold"
+            >
+              Google Maps
+            </a>
+            <span className="uppercase tracking-widest text-xs font-semibold">
+              Made in Delhi
+            </span>
+          </div>
+        </div>
+
       </div>
     </footer>
   );

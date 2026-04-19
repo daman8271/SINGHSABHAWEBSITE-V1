@@ -1,64 +1,119 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
 import { motion } from "framer-motion";
-import { contactWhatsAppUrl } from "@/lib/site";
+import Link from "next/link";
 
-export default function Hero({ image }: { image: string }) {
+const container = {
+  hidden: {},
+  show: {
+    transition: { staggerChildren: 0.11, delayChildren: 0.25 },
+  },
+};
+
+const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
+
+const item = {
+  hidden: { opacity: 0, y: 28 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.85, ease: EASE },
+  },
+};
+
+export default function Hero() {
   return (
-    <section className="relative bg-taupe">
-      <div className="absolute inset-0">
-        <Image
-          src={image}
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover opacity-[0.35] mix-blend-multiply"
+    <section className="relative min-h-[100dvh] w-full flex items-center pt-24 pb-12 bg-ink-dark z-20 overflow-hidden">
+
+      {/* Full-bleed dark background layer */}
+      <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
+        {/* Placeholder textured bg — replace with hero-bg image */}
+        <div
+          className="absolute inset-0 opacity-30"
+          style={{
+            background:
+              "radial-gradient(ellipse at 70% 40%, rgba(212,130,10,0.18) 0%, transparent 55%), radial-gradient(ellipse at 20% 80%, rgba(42,37,32,0.8) 0%, transparent 60%), #0a0806",
+          }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-taupe/20 via-transparent to-taupe/60" />
+        {/* Left-to-right darkening gradient (readability) */}
+        <div className="absolute inset-0 bg-gradient-to-r from-ink-dark via-ink-dark/80 to-transparent" />
+        {/* Bottom fade into next section */}
+        <div className="absolute bottom-0 inset-x-0 h-32 md:h-48 bg-gradient-to-t from-ink-dark to-transparent pointer-events-none" />
       </div>
 
-      <div className="relative mx-auto max-w-content px-6 md:px-10 pt-16 md:pt-28 pb-20 md:pb-36">
+      {/* Right-side rotated accent placeholder (hero-accent position) */}
+      <div className="absolute top-24 md:top-32 right-0 h-[100dvh] w-[90vw] md:w-[60vw] flex items-center justify-end pointer-events-none z-10">
         <motion.div
-          initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="max-w-[720px]"
+          initial={{ opacity: 0, scale: 1.02, rotate: -88 }}
+          animate={{ opacity: 1, scale: 1.15, rotate: -92 }}
+          transition={{ duration: 1.4, ease: EASE }}
+          className="relative h-[120vh] aspect-square origin-center translate-x-1/4 pointer-events-auto cursor-pointer"
+          style={{ filter: "brightness(0.9) contrast(1.1)" }}
         >
-          <div className="text-[11px] tracking-[0.3em] uppercase text-ink/70 mb-8">
-            Est. Delhi · The 2023–24 Catalogue
+          {/* Placeholder for trophy/flora accent — replace with hero-accent.webp */}
+          <div className="w-full h-full flex items-center justify-center">
+            <div className="w-[58%] h-[58%] rounded-full border border-amber/15 flex items-center justify-center opacity-80">
+              <svg
+                width="40%"
+                height="40%"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="rgba(212,130,10,0.25)"
+                strokeWidth="0.4"
+                className="drop-shadow-2xl"
+              >
+                <path d="M6 9v3a7 7 0 0 0 6 6.92V22h-3v2h6v-2h-3v-3.08A7 7 0 0 0 18 12V9M6 9a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2M18 9a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2M6 4h12" />
+              </svg>
+            </div>
           </div>
-          <h1 className="font-serif text-[44px] sm:text-[64px] md:text-[88px] leading-[0.95] text-ink text-balance">
-            Crafted
-            <br />
-            to be
-            <br />
-            <em className="italic">remembered.</em>
-          </h1>
-          <p className="mt-8 max-w-[46ch] text-[15px] md:text-base text-ink/75 leading-relaxed">
-            Trophies, medals, mementos and frames for schools, colleges and
-            corporates across Delhi. Five hundred pieces. Eighteen categories.
-            One legacy.
-          </p>
+        </motion.div>
+      </div>
 
-          <div className="mt-10 flex flex-wrap gap-3">
-            <Link
-              href="/catalog"
-              className="inline-flex items-center h-12 px-7 bg-ink text-cream text-[12px] tracking-[0.2em] uppercase hover:bg-ink/90 transition-colors"
-            >
-              Browse the Catalogue
-            </Link>
-            <a
-              href={contactWhatsAppUrl()}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center h-12 px-7 border border-ink/80 text-ink text-[12px] tracking-[0.2em] uppercase hover:bg-ink hover:text-cream transition-colors"
-            >
-              WhatsApp Us
-            </a>
-          </div>
+      {/* Content grid */}
+      <div className="relative w-full max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 items-center z-20 pointer-events-none">
+        <motion.div
+          variants={container}
+          initial="hidden"
+          animate="show"
+          className="md:col-span-7 flex flex-col items-start pointer-events-auto"
+        >
+          <motion.div variants={item}>
+            <span className="inline-block py-1 px-3 rounded-full border border-white/20 bg-white/10 text-white text-xs font-semibold tracking-widest uppercase mb-6 backdrop-blur-sm">
+              Atelier &amp; Archive
+            </span>
+
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-[0.9] text-cream mb-8 text-balance">
+              Crafted
+              <br />
+              <span className="text-amber italic font-normal">
+                to be remembered.
+              </span>
+            </h1>
+
+            <p className="text-lg text-cream/80 leading-relaxed max-w-[40ch] mb-10 text-balance">
+              Trophies, medals, mementos and frames for schools, colleges, and
+              institutions across Delhi. Architectural craft, not generic awards.
+            </p>
+
+            <div className="flex flex-wrap items-center gap-4">
+              <Link
+                href="/catalog"
+                className="relative inline-flex items-center justify-center font-medium overflow-hidden rounded-full transition-colors focus:outline-none py-3 tracking-tight h-14 px-8 text-base bg-cream text-ink hover:bg-cream/90"
+              >
+                <span className="relative z-10 flex items-center gap-2">
+                  View Collections
+                </span>
+              </Link>
+              <Link
+                href="/about"
+                className="relative inline-flex items-center justify-center font-medium overflow-hidden rounded-full transition-colors focus:outline-none py-3 tracking-tight bg-transparent h-14 px-8 text-base text-cream hover:bg-white/10"
+              >
+                <span className="relative z-10 flex items-center gap-2">
+                  Our Manifesto
+                </span>
+              </Link>
+            </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>

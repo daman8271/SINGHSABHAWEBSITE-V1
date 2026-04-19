@@ -4,26 +4,19 @@
 
 html,
 body {
-  background: #faf7f2;
-  color: #1a1613;
+  background: #100e0c;
+  color: #faf7f2;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 @layer base {
   ::selection {
-    background: #1a1613;
+    background: #d4820a;
     color: #faf7f2;
   }
-  h1,
-  h2,
-  h3,
-  h4 {
-    font-family: var(--font-playfair), Georgia, serif;
-    letter-spacing: -0.01em;
-  }
   body {
-    font-family: var(--font-inter), system-ui, sans-serif;
+    font-family: var(--font-geist), system-ui, sans-serif;
   }
 }
 

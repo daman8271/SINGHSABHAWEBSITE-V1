@@ -1,8 +1,9 @@
 export const SITE = {
   name: "Singh Sabha Enterprise",
   tagline: "Awards & Trophies · Delhi · Est. 2023",
-  whatsappNumber: "919999999999",
-  email: "hello@singhsabha.example",
+  whatsappNumber: "917011292289",
+  phone: "7011292289",
+  email: "singhsahibenterprises@gmail.com",
   address: "Delhi, India",
 } as const;
 
