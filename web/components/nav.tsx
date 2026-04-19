@@ -43,7 +43,12 @@ export default function Nav() {
   }, []);
 
   return (
-    <header className="fixed top-0 inset-x-0 z-50 transition-all duration-500 flex justify-center px-4 md:px-8 py-8">
+    <motion.header
+      initial={{ y: -32, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+      className="fixed top-0 inset-x-0 z-50 transition-all duration-500 flex justify-center px-4 md:px-8 py-8"
+    >
       <div
         className={`w-full max-w-7xl flex items-center justify-between rounded-full transition-all duration-500 ${
           scrolled
@@ -55,7 +60,7 @@ export default function Nav() {
         <Link href="/" className="flex items-center gap-2 group cursor-pointer pl-2">
           <LogoMark />
           <span className="text-xl font-bold tracking-tighter text-cream">
-            Singh Sabha<span className="text-amber">.</span>
+            Singh Sahib<span className="text-amber">.</span>
           </span>
         </Link>
 
@@ -148,6 +153,6 @@ export default function Nav() {
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
+    </motion.header>
   );
 }

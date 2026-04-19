@@ -7,7 +7,7 @@ const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 const TESTIMONIALS = [
   {
     quote:
-      "Singh Sabha delivered 200 trophies for our Annual Sports Day without a single defect. The engraving, the weight, the finish — every piece felt considered. Our students noticed.",
+      "Singh Sahib delivered 200 trophies for our Annual Sports Day without a single defect. The engraving, the weight, the finish — every piece felt considered. Our students noticed.",
     name: "Mrs. Anita Sharma",
     role: "Principal, Delhi Public School",
     initial: "A",

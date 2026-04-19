@@ -1,8 +1,8 @@
 import { SITE, contactWhatsAppUrl } from "@/lib/site";
 
 export const metadata = {
-  title: "Contact — Singh Sabha Enterprise",
-  description: "Reach Singh Sabha Enterprise — WhatsApp, email and Delhi workshop.",
+  title: "Contact — Singh Sahib Enterprise",
+  description: "Reach Singh Sahib Enterprise — WhatsApp, email and Delhi workshop.",
 };
 
 export default function ContactPage() {

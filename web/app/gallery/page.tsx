@@ -1,7 +1,7 @@
 import GalleryViewer from "@/components/gallery-viewer";
 
 export const metadata = {
-  title: "Gallery — Singh Sabha Enterprise",
+  title: "Gallery — Singh Sahib Enterprise",
   description: "Flip through the entire 2023–24 catalogue, page by page.",
 };
 

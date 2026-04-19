@@ -2,7 +2,7 @@ import CatalogBrowser from "@/components/catalog-browser";
 import { ALL_PRODUCTS } from "@/lib/products";
 
 export const metadata = {
-  title: "Catalogue — Singh Sabha Enterprise",
+  title: "Catalogue — Singh Sahib Enterprise",
   description: "Browse the full 2023–24 catalogue of trophies, medals, mementos and frames.",
 };
 

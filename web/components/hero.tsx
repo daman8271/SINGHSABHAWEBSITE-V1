@@ -27,9 +27,21 @@ export default function Hero() {
 
       {/* Full-bleed dark background layer */}
       <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
+        <motion.video
+          src="/hero-bg.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          initial={{ opacity: 0, scale: 1.06 }}
+          animate={{ opacity: 0.9, scale: 1 }}
+          transition={{ duration: 1.6, ease: EASE }}
+          className="absolute inset-y-0 right-0 h-full w-full md:w-[60%] object-cover"
+          style={{ objectPosition: 'center' }}
+        />
         {/* Placeholder textured bg — replace with hero-bg image */}
         <div
-          className="absolute inset-0 opacity-30"
+          className="absolute inset-0 opacity-15"
           style={{
             background:
               "radial-gradient(ellipse at 70% 40%, rgba(212,130,10,0.18) 0%, transparent 55%), radial-gradient(ellipse at 20% 80%, rgba(42,37,32,0.8) 0%, transparent 60%), #0a0806",
@@ -50,22 +62,6 @@ export default function Hero() {
           className="relative h-[120vh] aspect-square origin-center translate-x-1/4 pointer-events-auto cursor-pointer"
           style={{ filter: "brightness(0.9) contrast(1.1)" }}
         >
-          {/* Placeholder for trophy/flora accent — replace with hero-accent.webp */}
-          <div className="w-full h-full flex items-center justify-center">
-            <div className="w-[58%] h-[58%] rounded-full border border-amber/15 flex items-center justify-center opacity-80">
-              <svg
-                width="40%"
-                height="40%"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="rgba(212,130,10,0.25)"
-                strokeWidth="0.4"
-                className="drop-shadow-2xl"
-              >
-                <path d="M6 9v3a7 7 0 0 0 6 6.92V22h-3v2h6v-2h-3v-3.08A7 7 0 0 0 18 12V9M6 9a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2M18 9a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2M6 4h12" />
-              </svg>
-            </div>
-          </div>
         </motion.div>
       </div>
 

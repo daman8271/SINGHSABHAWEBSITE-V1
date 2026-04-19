@@ -17,7 +17,7 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Singh Sabha Enterprise — Awards & Trophies, Delhi",
+  title: "Singh Sahib Enterprise — Awards & Trophies, Delhi",
   description:
     "The legend of award products. Trophies, medals, mementos and frames for schools and colleges across Delhi. Est. 2023–24 catalogue.",
 };

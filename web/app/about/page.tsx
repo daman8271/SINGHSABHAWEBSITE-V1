@@ -2,8 +2,8 @@ import Link from "next/link";
 import { contactWhatsAppUrl } from "@/lib/site";
 
 export const metadata = {
-  title: "About — Singh Sabha Enterprise",
-  description: "The story behind Singh Sabha Enterprise — awards crafted in Delhi.",
+  title: "About — Singh Sahib Enterprise",
+  description: "The story behind Singh Sahib Enterprise — awards crafted in Delhi.",
 };
 
 export default function AboutPage() {
@@ -21,7 +21,7 @@ export default function AboutPage() {
           </div>
           <div className="md:col-span-5 md:pt-4">
             <p className="text-[15px] leading-relaxed text-ink/80 max-w-[44ch]">
-              For years Singh Sabha Enterprise has crafted trophies, medals and
+              For years Singh Sahib Enterprise has crafted trophies, medals and
               mementos for schools, colleges and corporates across Delhi. One
               catalogue. Every piece made to be remembered.
             </p>
