@@ -1,11 +1,22 @@
 {
   "permissions": {
     "allow": [
-      "Bash(claude install-skill *)",
       "Bash(curl -s https://floria-landing-page.vercel.app/_next/static/chunks/2617f72e05f1415d.css)",
       "Bash(npm run *)",
-      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000)",
-      "Bash(npx tsc *)"
+      "Bash(npx tsc *)",
+      "Bash(git add *)",
+      "Bash(git -C /Users/damanpreetsingh/Desktop/singhsabhanenterprise status --porcelain)",
+      "Read(//private/tmp/**)",
+      "Read(//private/var/folders/**)",
+      "Bash(unzip -l /Users/damanpreetsingh/Desktop/singhsabhanenterprise/web/public/frames.zip)",
+      "Bash(curl -sS -o /dev/null -w \"Home: %{http_code}\\\\n\" http://localhost:3002/)",
+      "Bash(curl -sS -o /dev/null -w \"Frame 001: %{http_code}\\\\n\" http://localhost:3002/frames/ezgif-frame-001.jpg)",
+      "Bash(curl -sS -o /dev/null -w \"Frame 100: %{http_code}\\\\n\" http://localhost:3002/frames/ezgif-frame-100.jpg)",
+      "Bash(curl -sS -o /dev/null -w \"Frame 200: %{http_code}\\\\n\" http://localhost:3002/frames/ezgif-frame-200.jpg)",
+      "Bash(curl -sS -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3000/)",
+      "Bash(git -C /Users/damanpreetsingh/Desktop/singhsabhanenterprise status)",
+      "Bash(git -C /Users/damanpreetsingh/Desktop/singhsabhanenterprise remote -v)",
+      "Bash(git -C /Users/damanpreetsingh/Desktop/singhsabhanenterprise log --oneline -5)"
     ]
   }
 }

@@ -73,27 +73,27 @@ export default function Footer() {
             </h4>
             <ul className="flex flex-col gap-4 text-white/50 text-base">
               <li>
-                <Link href="/catalog?category=trophies" className="hover:text-white transition-colors">
+                <Link href="/catalog?cat=trophies" className="hover:text-white transition-colors">
                   Trophies
                 </Link>
               </li>
               <li>
-                <Link href="/catalog?category=medals" className="hover:text-white transition-colors">
+                <Link href="/catalog?cat=medals" className="hover:text-white transition-colors">
                   Medals
                 </Link>
               </li>
               <li>
-                <Link href="/catalog?category=crystal" className="hover:text-white transition-colors">
+                <Link href="/catalog?cat=crystal" className="hover:text-white transition-colors">
                   Crystal Awards
                 </Link>
               </li>
               <li>
-                <Link href="/catalog?category=acrylic" className="hover:text-white transition-colors">
+                <Link href="/catalog?cat=acrylic" className="hover:text-white transition-colors">
                   Acrylic Awards
                 </Link>
               </li>
               <li>
-                <Link href="/catalog?category=frames" className="hover:text-white transition-colors">
+                <Link href="/catalog?cat=frames" className="hover:text-white transition-colors">
                   Frames &amp; Mementos
                 </Link>
               </li>

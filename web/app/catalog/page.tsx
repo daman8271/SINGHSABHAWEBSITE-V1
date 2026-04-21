@@ -1,5 +1,6 @@
 import CatalogBrowser from "@/components/catalog-browser";
 import { ALL_PRODUCTS } from "@/lib/products";
+import { Suspense } from "react";
 
 export const metadata = {
   title: "Catalogue — Singh Sahib Enterprise",
@@ -23,7 +24,9 @@ export default function CatalogPage() {
           </p>
         </div>
       </section>
-      <CatalogBrowser products={ALL_PRODUCTS} />
+      <Suspense fallback={<div className="text-center py-20">Loading catalogue...</div>}>
+        <CatalogBrowser products={ALL_PRODUCTS} />
+      </Suspense>
     </>
   );
 }

@@ -17,7 +17,7 @@ export default function ContactPage() {
         </h1>
         <p className="mt-6 max-w-[52ch] text-[15px] text-ink/75 leading-relaxed">
           WhatsApp is the fastest way to reach us. Share your product codes,
-          quantities and event date — we'll reply with quotes and lead times.
+          quantities and event date — we&apos;ll reply with quotes and lead times.
         </p>
 
         <div className="mt-10 space-y-6">

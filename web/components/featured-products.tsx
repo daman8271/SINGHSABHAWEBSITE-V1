@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 
 const PRODUCTS = [
@@ -11,6 +12,7 @@ const PRODUCTS = [
     price: "₹850",
     category: "Royal Series",
     aspect: "aspect-[3/4]",
+    image: "/1.png",
   },
   {
     id: 2,
@@ -18,6 +20,7 @@ const PRODUCTS = [
     price: "₹650",
     category: "Crystal",
     aspect: "aspect-square",
+    image: "/2.png",
   },
   {
     id: 3,
@@ -25,6 +28,7 @@ const PRODUCTS = [
     price: "₹420",
     category: "Metal Cups",
     aspect: "aspect-[4/5]",
+    image: "/3.jpeg",
   },
 ];
 
@@ -55,32 +59,17 @@ function ProductCard({
       <div
         className={`w-full relative overflow-hidden rounded-[2rem] mb-6 ${product.aspect} bg-card-dark`}
       >
-        {/* Placeholder (image will replace) */}
-        <div className="absolute inset-0 flex items-center justify-center transition-transform duration-700 group-hover:scale-110">
-          <div className="text-center">
-            <div className="w-20 h-20 mx-auto rounded-full border border-white/8 flex items-center justify-center mb-3">
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1"
-                className="text-cream/15"
-              >
-                <rect x="3" y="3" width="18" height="18" rx="2" />
-                <circle cx="8.5" cy="8.5" r="1.5" />
-                <path d="M21 15l-5-5L5 21" />
-              </svg>
-            </div>
-            <span className="text-[9px] tracking-[0.25em] uppercase text-cream/15">
-              Product Photo
-            </span>
-          </div>
-        </div>
+        <Image
+          src={product.image}
+          alt={product.name}
+          fill
+          sizes="(min-width: 768px) 33vw, 100vw"
+          className="object-cover transition-transform duration-700 group-hover:scale-110"
+          priority={index === 0}
+        />
 
         {/* Darkening overlay that lifts on hover */}
-        <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors duration-500" />
+        <div className="absolute inset-0 bg-black/15 group-hover:bg-black/0 transition-colors duration-500" />
 
         {/* "Quick Enquire" pill — slides up from bottom on hover */}
         <div className="absolute inset-x-0 bottom-0 p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out flex justify-center">
@@ -93,13 +82,10 @@ function ProductCard({
         <div className="absolute inset-0 rounded-[2rem] shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] pointer-events-none" />
       </div>
 
-      {/* Below card — name + price */}
-      <div className="flex justify-between items-start">
-        <h3 className="text-xl font-medium tracking-tight text-cream group-hover:text-amber transition-colors">
-          {product.name}
-        </h3>
-        <span className="text-lg text-cream/55">{product.price}</span>
-      </div>
+      {/* Below card — name */}
+      <h3 className="text-xl font-medium tracking-tight text-cream group-hover:text-amber transition-colors">
+        {product.name}
+      </h3>
     </motion.div>
   );
 }
@@ -122,10 +108,10 @@ export default function FeaturedProducts() {
         >
           <div>
             <span className="text-[10px] tracking-[0.32em] uppercase text-cream/35 block mb-3">
-              The Collection
+              For Every Occasion
             </span>
             <h2 className="font-sans font-black text-[38px] md:text-[54px] leading-none tracking-tight text-cream">
-              Curated Excellence.
+              Trophies for Every Occasion
             </h2>
           </div>
           <Link

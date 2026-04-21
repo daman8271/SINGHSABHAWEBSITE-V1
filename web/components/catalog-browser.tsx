@@ -56,10 +56,11 @@ export default function CatalogBrowser({ products }: { products: Product[] }) {
     <section className="mx-auto max-w-content px-6 md:px-10 py-10 md:py-16">
       <div className="flex flex-col lg:flex-row lg:items-end gap-6 lg:gap-10 mb-10">
         <div className="flex-1">
-          <label className="block text-[11px] tracking-[0.2em] uppercase text-muted mb-3">
+          <label htmlFor="search-input" className="block text-[11px] tracking-[0.2em] uppercase text-muted mb-3">
             Search by code
           </label>
           <input
+            id="search-input"
             type="search"
             value={q}
             onChange={(e) => {

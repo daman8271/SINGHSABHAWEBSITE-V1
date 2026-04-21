@@ -1,15 +1,23 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 
-const CATEGORIES = [
-  { name: "ABS Trophies", slug: "abs-trophies" },
-  { name: "Metal Cups", slug: "metal-cups" },
-  { name: "Crystal Awards", slug: "crystal" },
-  { name: "Medals", slug: "medals" },
-  { name: "Acrylic Awards", slug: "acrylic" },
-  { name: "Frames & Mementos", slug: "frames" },
+type Category = {
+  name: string;
+  slug: string;
+  image?: string;
+  fit?: "cover" | "contain";
+};
+
+const CATEGORIES: Category[] = [
+  { name: "ABS Trophies", slug: "abs-trophies", image: "/cat 1.png" },
+  { name: "Metal Cups", slug: "metal-cups", image: "/cat 2.png" },
+  { name: "Crystal Awards", slug: "crystal", image: "/cat 4.jpeg" },
+  { name: "Medals", slug: "medals", image: "/cat 6 .png" },
+  { name: "Acrylic Awards", slug: "acrylic", image: "/cat 5.png" },
+  { name: "Royal Series", slug: "frames", image: "/Whisk_22cc2150a4afc9280e44b7ef5098081adr.png" },
 ];
 
 export default function CategoriesArchive() {
@@ -56,30 +64,43 @@ export default function CategoriesArchive() {
               }}
             >
               <Link
-                href={`/catalog?category=${cat.slug}`}
+                href={`/catalog?cat=${cat.slug}`}
                 className="group relative flex aspect-[3/4] rounded-[2.5rem] overflow-hidden bg-card-dark block"
               >
-                {/* Placeholder fill — scales on hover like Floria collections */}
-                <div className="absolute inset-0 flex items-center justify-center transition-transform duration-1000 group-hover:scale-110">
-                  <div className="text-center">
-                    <svg
-                      width="22"
-                      height="22"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="0.8"
-                      className="text-cream/10 mx-auto mb-2"
-                    >
-                      <rect x="3" y="3" width="18" height="18" rx="2" />
-                      <circle cx="8.5" cy="8.5" r="1.5" />
-                      <path d="M21 15l-5-5L5 21" />
-                    </svg>
-                    <span className="text-[8px] tracking-[0.2em] uppercase text-cream/10">
-                      Photo
-                    </span>
+                {/* Image or placeholder — scales on hover like Floria collections */}
+                {cat.image ? (
+                  <div className="absolute inset-0 transition-transform duration-1000 group-hover:scale-110">
+                    <Image
+                      src={cat.image}
+                      alt={cat.name}
+                      fill
+                      sizes="(max-width: 768px) 50vw, 33vw"
+                      className={`${cat.fit === "contain" ? "object-contain p-6 md:p-8" : "object-cover"} object-center`}
+                      priority={i < 3}
+                    />
                   </div>
-                </div>
+                ) : (
+                  <div className="absolute inset-0 flex items-center justify-center transition-transform duration-1000 group-hover:scale-110">
+                    <div className="text-center">
+                      <svg
+                        width="22"
+                        height="22"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="0.8"
+                        className="text-cream/10 mx-auto mb-2"
+                      >
+                        <rect x="3" y="3" width="18" height="18" rx="2" />
+                        <circle cx="8.5" cy="8.5" r="1.5" />
+                        <path d="M21 15l-5-5L5 21" />
+                      </svg>
+                      <span className="text-[8px] tracking-[0.2em] uppercase text-cream/10">
+                        Photo
+                      </span>
+                    </div>
+                  </div>
+                )}
 
                 {/* Always-visible bottom gradient (intensifies on hover) */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500" />

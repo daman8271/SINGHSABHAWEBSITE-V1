@@ -27,18 +27,22 @@ export default function Hero() {
 
       {/* Full-bleed dark background layer */}
       <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
-        <motion.video
-          src="/hero-bg.mp4"
-          autoPlay
-          muted
-          loop
-          playsInline
+        <motion.div
           initial={{ opacity: 0, scale: 1.06 }}
           animate={{ opacity: 0.9, scale: 1 }}
           transition={{ duration: 1.6, ease: EASE }}
-          className="absolute inset-y-0 right-0 h-full w-full md:w-[60%] object-cover"
-          style={{ objectPosition: 'center' }}
-        />
+          className="absolute inset-y-0 right-0 h-full w-full md:w-[60%]"
+        >
+          <video
+            src="/hero-bg.mp4"
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="h-full w-full object-cover"
+            style={{ objectPosition: 'center' }}
+          />
+        </motion.div>
         {/* Placeholder textured bg — replace with hero-bg image */}
         <div
           className="absolute inset-0 opacity-15"

@@ -68,7 +68,7 @@ export default function AboutPage() {
             Planning an awards night?
           </h2>
           <p className="mt-5 max-w-[48ch] mx-auto text-[15px] text-cream/70 leading-relaxed">
-            Share your event details on WhatsApp. We'll send quotes, lead times
+            Share your event details on WhatsApp. We&apos;ll send quotes, lead times
             and size recommendations within the hour.
           </p>
           <div className="mt-10 flex flex-wrap gap-3 justify-center">

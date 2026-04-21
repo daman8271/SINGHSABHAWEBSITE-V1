@@ -1,6 +1,8 @@
 "use client";
 
+import { useRef } from "react";
 import { motion } from "framer-motion";
+import ScrollFrames from "./scroll-frames";
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
@@ -23,41 +25,36 @@ const STEPS = [
 ];
 
 export default function ProcessSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+
   return (
     <section
+      ref={sectionRef}
       id="process"
       className="py-24 md:py-40 bg-ink-dark text-cream relative overflow-x-clip z-20"
     >
       {/* Amber ambient glow (center) */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] md:w-[40vw] md:h-[40vw] rounded-full bg-amber/5 blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] md:w-[40vw] md:h-[40vw] rounded-full bg-amber/5 blur-[120px] pointer-events-none z-0" />
 
-      {/* Subtle dark flora/trophy image on the left (placeholder) */}
-      <motion.div
-        initial={{ opacity: 0, x: -100 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1.1, ease: EASE }}
-        className="absolute -left-10 md:-left-32 -top-10 md:-top-32 w-[80%] md:w-[55vw] max-w-[1000px] z-0 pointer-events-none"
+      {/* Subtle scroll-driven video background — sits behind all text */}
+      <div
+        className="absolute inset-0 z-0 pointer-events-none opacity-25 md:opacity-30"
         style={{
           WebkitMaskImage:
-            "radial-gradient(circle at center left, black 30%, transparent 100%)",
+            "radial-gradient(ellipse at center, black 40%, transparent 85%)",
           maskImage:
-            "radial-gradient(circle at center left, black 30%, transparent 100%)",
+            "radial-gradient(ellipse at center, black 40%, transparent 85%)",
         }}
       >
-        {/* Placeholder — will be replaced with process-bg.webp */}
-        <div className="w-full aspect-square flex items-center justify-center opacity-30">
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="rgba(212,130,10,0.35)"
-            strokeWidth="0.3"
-            className="w-[70%] h-[70%] mix-blend-lighten"
-          >
-            <path d="M6 9v3a7 7 0 0 0 6 6.92V22h-3v2h6v-2h-3v-3.08A7 7 0 0 0 18 12V9M6 9a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2M18 9a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2M6 4h12" />
-          </svg>
-        </div>
-      </motion.div>
+        <ScrollFrames
+          targetRef={sectionRef}
+          frameCount={100}
+          offset={["start end", "end start"]}
+        />
+      </div>
+
+      {/* Darkening overlay to keep text fully legible over the video */}
+      <div className="absolute inset-0 z-0 bg-ink-dark/60 pointer-events-none" />
 
       <div className="w-full max-w-7xl mx-auto px-4 md:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
