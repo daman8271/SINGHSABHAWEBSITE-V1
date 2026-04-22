@@ -1,0 +1,11 @@
+.git
+.venv
+.claude
+catalog-2023-2024_compressed.pdf
+catalog_extracted.json
+catalog_ocr.json
+CATALOG_CONTENT.md
+CATALOG_OCR.md
+scripts
+web/.next
+web/node_modules

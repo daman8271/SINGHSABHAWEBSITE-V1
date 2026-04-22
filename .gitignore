@@ -18,3 +18,4 @@ catalog-2023-2024_compressed.pdf
 # Large OCR intermediates (regenerable)
 catalog_extracted.json
 catalog_ocr.json
+.vercel
