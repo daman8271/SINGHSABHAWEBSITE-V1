@@ -118,7 +118,7 @@ export default function Hero() {
       <div className="relative w-full max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 items-center z-20 pointer-events-none">
         <div className="md:col-span-7 flex flex-col items-start pointer-events-auto">
           <div>
-            <span className="inline-block py-1 px-3 rounded-full border border-white/20 bg-white/10 text-white text-xs font-semibold tracking-widest uppercase mb-6 backdrop-blur-sm">
+            <span className="inline-flex items-center rounded-full border border-white/15 bg-black/35 px-5 py-3 text-[0.92rem] font-semibold tracking-[0.22em] uppercase text-white mb-7 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-md">
               Atelier &amp; Archive
             </span>
 
