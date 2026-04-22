@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -11,25 +12,6 @@ const LINKS = [
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
-
-function LogoMark() {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="1em"
-      height="1em"
-      fill="currentColor"
-      viewBox="0 0 256 256"
-      className="w-8 h-8 text-amber group-hover:rotate-12 transition-transform duration-500"
-    >
-      <path
-        d="M128,32a96,96,0,1,0,96,96A96.11,96.11,0,0,0,128,32Zm0,48a12,12,0,1,1-12,12A12,12,0,0,1,128,80Zm48,40a12,12,0,1,1-12,12A12,12,0,0,1,176,120ZM80,120a12,12,0,1,1,12,12A12,12,0,0,1,80,120Zm48,72a12,12,0,1,1,12-12A12,12,0,0,1,128,192Z"
-        opacity="0.25"
-      />
-      <path d="M128,24A104,104,0,1,0,232,128,104.13,104.13,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216ZM172,92l-36,36V72a8,8,0,0,0-16,0v56L84,92a8,8,0,0,0-11.31,11.31L112,142.63V184a8,8,0,0,0,16,0V142.63l39.31-39.32A8,8,0,0,0,172,92Z" />
-    </svg>
-  );
-}
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
@@ -52,8 +34,17 @@ export default function Nav() {
         }`}
       >
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 group cursor-pointer pl-2">
-          <LogoMark />
+        <Link href="/" className="flex items-center gap-3 group cursor-pointer pl-2">
+          <span className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.035] shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-transform duration-500 group-hover:scale-105">
+            <Image
+              src="/favicon.png"
+              alt="Singh Sahib Enterprise logo"
+              width={56}
+              height={56}
+              priority
+              className="h-7 w-7 object-contain"
+            />
+          </span>
           <span className="text-xl font-bold tracking-tighter text-cream">
             Singh Sahib<span className="text-amber">.</span>
           </span>

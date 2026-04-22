@@ -20,6 +20,11 @@ export const metadata: Metadata = {
   title: "Singh Sahib Enterprise — Awards & Trophies, Delhi",
   description:
     "The legend of award products. Trophies, medals, mementos and frames for schools and colleges across Delhi. Est. 2023–24 catalogue.",
+  icons: {
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
+  },
 };
 
 export default function RootLayout({
