@@ -47,25 +47,25 @@ export default function Nav() {
       <div
         className={`w-full max-w-7xl flex items-center justify-between rounded-full transition-all duration-500 ${
           scrolled
-            ? "px-3 md:px-4 py-3 bg-ink-dark/70 backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.35)]"
-            : "px-0 py-0 bg-transparent"
+            ? "px-6 py-3 bg-ink-dark/70 backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.35)]"
+            : "px-2 py-2 bg-transparent"
         }`}
       >
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-3 group cursor-pointer pl-2 md:pl-0">
+        <Link href="/" className="flex items-center gap-2 group cursor-pointer pl-2">
           <LogoMark />
-          <span className="text-[1.9rem] md:text-[2.05rem] font-bold tracking-[-0.06em] text-cream leading-none">
+          <span className="text-xl font-bold tracking-tighter text-cream">
             Singh Sahib<span className="text-amber">.</span>
           </span>
         </Link>
 
         {/* Center nav links */}
-        <nav className="hidden md:flex items-center gap-2 rounded-full border border-white/8 bg-black/20 px-3 py-2 backdrop-blur-md shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
+        <nav className="hidden md:flex items-center gap-8">
           {LINKS.map((l) => (
             <Link
               key={l.href}
               href={l.href}
-              className="inline-flex items-center justify-center rounded-full px-5 py-3 text-[1.05rem] font-medium text-cream/65 transition-colors duration-300 hover:bg-white/6 hover:text-cream"
+              className="text-sm font-medium text-cream/55 hover:text-cream transition-colors"
             >
               {l.label}
             </Link>
@@ -76,7 +76,7 @@ export default function Nav() {
         <div className="hidden md:block">
           <Link
             href="/contact"
-            className="relative inline-flex h-14 items-center justify-center overflow-hidden rounded-full border border-[#dce7ce]/50 bg-[#c8d7b8]/95 px-9 text-[1.05rem] font-medium tracking-tight text-[#182014] shadow-[inset_0_1px_0_rgba(255,255,255,0.45),0_12px_30px_rgba(0,0,0,0.2)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#d5e3c7] focus:outline-none"
+            className="relative inline-flex items-center justify-center font-medium overflow-hidden transition-colors focus:outline-none px-6 py-3 text-sm tracking-tight bg-cream text-ink hover:bg-cream/90 rounded-full"
           >
             <span className="relative z-10 flex items-center gap-2">Contact Us</span>
           </Link>
