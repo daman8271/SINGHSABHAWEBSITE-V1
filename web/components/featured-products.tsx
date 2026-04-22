@@ -65,7 +65,6 @@ function ProductCard({
           fill
           sizes="(min-width: 768px) 33vw, 100vw"
           className="object-cover transition-transform duration-700 group-hover:scale-110"
-          priority={index === 0}
         />
 
         {/* Darkening overlay that lifts on hover */}

@@ -76,7 +76,6 @@ export default function CategoriesArchive() {
                       fill
                       sizes="(max-width: 768px) 50vw, 33vw"
                       className={`${cat.fit === "contain" ? "object-contain p-6 md:p-8" : "object-cover"} object-center`}
-                      priority={i < 3}
                     />
                   </div>
                 ) : (

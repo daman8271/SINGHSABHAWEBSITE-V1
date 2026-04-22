@@ -1,48 +1,93 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
-const container = {
-  hidden: {},
-  show: {
-    transition: { staggerChildren: 0.11, delayChildren: 0.25 },
-  },
-};
-
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
-const item = {
-  hidden: { opacity: 0, y: 28 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.85, ease: EASE },
-  },
-};
-
 export default function Hero() {
+  const [videoSrc, setVideoSrc] = useState<string | null>(null);
+  const [videoReady, setVideoReady] = useState(false);
+
+  useEffect(() => {
+    const navWithConnection = navigator as Navigator & {
+      connection?: {
+        effectiveType?: string;
+        saveData?: boolean;
+      };
+    };
+    const connection = navWithConnection.connection;
+    const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const mobileQuery = window.matchMedia("(max-width: 767px)");
+
+    const applyVideoStrategy = () => {
+      const shouldDisableVideo =
+        reducedMotionQuery.matches ||
+        connection?.saveData === true ||
+        connection?.effectiveType === "slow-2g" ||
+        connection?.effectiveType === "2g";
+
+      setVideoReady(false);
+      setVideoSrc(
+        shouldDisableVideo
+          ? null
+          : mobileQuery.matches
+            ? "/hero-bg-mobile.mp4"
+            : "/hero-bg-desktop.mp4",
+      );
+    };
+
+    applyVideoStrategy();
+    reducedMotionQuery.addEventListener("change", applyVideoStrategy);
+    mobileQuery.addEventListener("change", applyVideoStrategy);
+
+    return () => {
+      reducedMotionQuery.removeEventListener("change", applyVideoStrategy);
+      mobileQuery.removeEventListener("change", applyVideoStrategy);
+    };
+  }, []);
+
   return (
     <section className="relative min-h-[100dvh] w-full flex items-center pt-24 pb-12 bg-ink-dark z-20 overflow-hidden">
 
       {/* Full-bleed dark background layer */}
       <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
-        <motion.div
-          initial={{ opacity: 0, scale: 1.06 }}
-          animate={{ opacity: 0.9, scale: 1 }}
-          transition={{ duration: 1.6, ease: EASE }}
+        <div
           className="absolute inset-y-0 right-0 h-full w-full md:w-[60%]"
+          style={{ opacity: 0.9 }}
         >
-          <video
-            src="/hero-bg.mp4"
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="h-full w-full object-cover"
-            style={{ objectPosition: 'center' }}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/hero-bg-poster.jpg"
+            alt=""
+            aria-hidden
+            fetchPriority="high"
+            loading="eager"
+            decoding="async"
+            className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${
+              videoReady ? "opacity-0" : "opacity-100"
+            }`}
+            style={{ objectPosition: "center" }}
           />
-        </motion.div>
+          {videoSrc ? (
+            <video
+              key={videoSrc}
+              src={videoSrc}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              poster="/hero-bg-poster.jpg"
+              onLoadedData={() => setVideoReady(true)}
+              className={`h-full w-full object-cover transition-opacity duration-700 ${
+                videoReady ? "opacity-100" : "opacity-0"
+              }`}
+              style={{ objectPosition: "center" }}
+            />
+          ) : null}
+        </div>
         {/* Placeholder textured bg — replace with hero-bg image */}
         <div
           className="absolute inset-0 opacity-15"
@@ -71,13 +116,8 @@ export default function Hero() {
 
       {/* Content grid */}
       <div className="relative w-full max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 items-center z-20 pointer-events-none">
-        <motion.div
-          variants={container}
-          initial="hidden"
-          animate="show"
-          className="md:col-span-7 flex flex-col items-start pointer-events-auto"
-        >
-          <motion.div variants={item}>
+        <div className="md:col-span-7 flex flex-col items-start pointer-events-auto">
+          <div>
             <span className="inline-block py-1 px-3 rounded-full border border-white/20 bg-white/10 text-white text-xs font-semibold tracking-widest uppercase mb-6 backdrop-blur-sm">
               Atelier &amp; Archive
             </span>
@@ -113,8 +153,8 @@ export default function Hero() {
                 </span>
               </Link>
             </div>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   );

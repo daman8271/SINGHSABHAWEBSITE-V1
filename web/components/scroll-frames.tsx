@@ -37,6 +37,7 @@ export default function ScrollFrames({
   const currentFrameRef = useRef(0);
   const [ready, setReady] = useState(false);
   const [canAnimate, setCanAnimate] = useState(false);
+  const [shouldLoadFrames, setShouldLoadFrames] = useState(false);
 
   const { scrollYProgress } = useScroll({
     target: targetRef,
@@ -53,7 +54,25 @@ export default function ScrollFrames({
   }, []);
 
   useEffect(() => {
-    if (!canAnimate) return;
+    const target = targetRef.current;
+    if (!target || !canAnimate) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry?.isIntersecting) return;
+        setShouldLoadFrames(true);
+        observer.disconnect();
+      },
+      { rootMargin: "400px 0px" },
+    );
+
+    observer.observe(target);
+
+    return () => observer.disconnect();
+  }, [canAnimate, targetRef]);
+
+  useEffect(() => {
+    if (!canAnimate || !shouldLoadFrames) return;
     let cancelled = false;
     let loaded = 0;
     const imgs: HTMLImageElement[] = new Array(frameCount);
@@ -78,7 +97,7 @@ export default function ScrollFrames({
       cancelled = true;
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [canAnimate, frameCount, pathPrefix, pathSuffix]);
+  }, [canAnimate, frameCount, pathPrefix, pathSuffix, shouldLoadFrames]);
 
   const drawFrame = (index: number) => {
     const canvas = canvasRef.current;
@@ -146,10 +165,10 @@ export default function ScrollFrames({
         className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${
           canAnimate && ready ? "opacity-0" : "opacity-100"
         }`}
-        loading="lazy"
+        loading={shouldLoadFrames ? "eager" : "lazy"}
         decoding="async"
       />
-      {canAnimate && (
+      {canAnimate && shouldLoadFrames && (
         <canvas
           ref={canvasRef}
           aria-hidden

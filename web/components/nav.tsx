@@ -43,12 +43,7 @@ export default function Nav() {
   }, []);
 
   return (
-    <motion.header
-      initial={{ y: -32, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-      className="fixed top-0 inset-x-0 z-50 transition-all duration-500 flex justify-center px-4 md:px-8 py-8"
-    >
+    <header className="fixed top-0 inset-x-0 z-50 transition-all duration-500 flex justify-center px-4 md:px-8 py-8">
       <div
         className={`w-full max-w-7xl flex items-center justify-between rounded-full transition-all duration-500 ${
           scrolled
@@ -153,6 +148,6 @@ export default function Nav() {
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.header>
+    </header>
   );
 }

@@ -52,6 +52,12 @@ const TESTIMONIALS = [
   },
 ];
 
+const MOBILE_TESTIMONIALS = [
+  TESTIMONIALS[0],
+  TESTIMONIALS[1],
+  TESTIMONIALS[3],
+];
+
 function Stars() {
   return (
     <div className="flex gap-1 mb-8 text-cream/40">
@@ -83,6 +89,60 @@ function QuoteMark() {
   );
 }
 
+function TestimonialCard({
+  testimonial,
+  index,
+}: {
+  testimonial: (typeof TESTIMONIALS)[number];
+  index: number;
+}) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{
+        duration: 0.75,
+        delay: index * 0.08,
+        ease: EASE,
+      }}
+      className={`relative p-8 md:p-10 rounded-3xl bg-card-dark/40 backdrop-blur-sm border border-white/5 hover:border-white/10 hover:bg-card-dark/60 transition-colors group flex flex-col justify-between ${testimonial.colSpan}`}
+    >
+      <QuoteMark />
+
+      <div className={`relative z-10 flex flex-col h-full ${testimonial.align}`}>
+        <Stars />
+
+        <p className="text-cream/80 text-lg md:text-xl leading-relaxed mb-12 font-medium">
+          {testimonial.quote}
+        </p>
+
+        <div
+          className={`flex mt-auto gap-4 ${
+            testimonial.align ? "flex-col items-center gap-2" : "items-center"
+          }`}
+        >
+          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-amber/60 to-amber/30 border border-white/10 flex items-center justify-center text-xs font-medium text-cream shadow-inner shrink-0">
+            {testimonial.initial}
+          </div>
+          <div
+            className={`flex flex-col ${
+              testimonial.align ? "items-center" : ""
+            }`}
+          >
+            <span className="text-sm font-semibold text-cream">
+              {testimonial.name}
+            </span>
+            <span className="text-xs text-cream/40 uppercase tracking-wider mt-0.5">
+              {testimonial.role}
+            </span>
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
 export default function Testimonials() {
   return (
     <section className="py-32 md:py-48 bg-ink-dark relative overflow-hidden flex flex-col items-center">
@@ -107,52 +167,23 @@ export default function Testimonials() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-amber/5 blur-[150px] pointer-events-none" />
 
       <div className="w-full max-w-7xl mx-auto px-4 md:px-8 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8">
-          {TESTIMONIALS.map((t, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{
-                duration: 0.75,
-                delay: i * 0.08,
-                ease: EASE,
-              }}
-              className={`relative p-8 md:p-10 rounded-3xl bg-card-dark/40 backdrop-blur-sm border border-white/5 hover:border-white/10 hover:bg-card-dark/60 transition-colors group flex flex-col justify-between ${t.colSpan}`}
-            >
-              <QuoteMark />
+        <div className="grid grid-cols-1 gap-6 md:hidden">
+          {MOBILE_TESTIMONIALS.map((testimonial, index) => (
+            <TestimonialCard
+              key={`${testimonial.name}-mobile`}
+              testimonial={testimonial}
+              index={index}
+            />
+          ))}
+        </div>
 
-              <div className={`relative z-10 flex flex-col h-full ${t.align}`}>
-                <Stars />
-
-                <p className="text-cream/80 text-lg md:text-xl leading-relaxed mb-12 font-medium">
-                  {t.quote}
-                </p>
-
-                <div
-                  className={`flex mt-auto gap-4 ${
-                    t.align ? "flex-col items-center gap-2" : "items-center"
-                  }`}
-                >
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-amber/60 to-amber/30 border border-white/10 flex items-center justify-center text-xs font-medium text-cream shadow-inner shrink-0">
-                    {t.initial}
-                  </div>
-                  <div
-                    className={`flex flex-col ${
-                      t.align ? "items-center" : ""
-                    }`}
-                  >
-                    <span className="text-sm font-semibold text-cream">
-                      {t.name}
-                    </span>
-                    <span className="text-xs text-cream/40 uppercase tracking-wider mt-0.5">
-                      {t.role}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
+        <div className="hidden md:grid md:grid-cols-12 gap-6 md:gap-8">
+          {TESTIMONIALS.map((testimonial, index) => (
+            <TestimonialCard
+              key={`${testimonial.name}-desktop`}
+              testimonial={testimonial}
+              index={index}
+            />
           ))}
         </div>
 
